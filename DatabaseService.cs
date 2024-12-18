@@ -3,7 +3,10 @@ using Microsoft.Data.SqlClient;
 
 public class DatabaseService
 {
-    private readonly string _connectionString = "Server=DESKTOP-IGVKO3E\\SQLEXPRESS;Database=game;User Id=DESKTOP-IGVKO3E\\Kris;";
+    private readonly string _connectionString = "Server=DESKTOP-IGVKO3E\\SQLEXPRESS;Database=game;Trusted_Connection=True;TrustServerCertificate=True;";
+
+
+
 
     // Метод за създаване на връзка към MS SQL
     public SqlConnection CreateConnection() => new SqlConnection(_connectionString);

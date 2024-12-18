@@ -13,8 +13,6 @@ namespace game
         {
             InitializeComponent();
         }
-
-
         private async void OnLoginClicked(object sender, EventArgs e)
         {
             var username = UsernameEntry.Text?.Trim();
@@ -59,7 +57,7 @@ namespace game
         private async void OnRegisterClicked(object sender, EventArgs e)
         {
             // Логика за регистрация
-            await DisplayAlert("Регистрация", "Функцията за регистрация е все още неактивна.", "OK");
+            await Navigation.PushAsync(new RegisterPage());
         }
 
         public class User

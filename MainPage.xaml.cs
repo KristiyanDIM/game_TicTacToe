@@ -13,16 +13,16 @@ namespace game
         }
 
 
-        private void OnLoginClicked(object sender, EventArgs e)
+        private async void OnLoginClicked(object sender, EventArgs e)
         {
             // Логика за логване
-            DisplayAlert("Login", "Login functionality here", "OK");
+            await Navigation.PushAsync(new LoginPage());
         }
 
-        private void OnRegisterClicked(object sender, EventArgs e)
+        private async void OnRegisterClicked(object sender, EventArgs e)
         {
             // Логика за регистрация
-            DisplayAlert("Register", "Registration functionality here", "OK");
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }
