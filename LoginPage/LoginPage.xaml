@@ -2,15 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="game.LoginPage"
-             Title="LoginPage">
+             Title="LoginPage"
+             BackgroundColor="White">
+    
 
 
-    <StackLayout Padding="30">
+    <StackLayout Padding="30" Spacing="30">
         <Label Text="Вход" FontSize="24" HorizontalOptions="Center" />
-        <Entry x:Name="UsernameEntry" Placeholder="Потребителско име" />
-        <Entry x:Name="PasswordEntry" Placeholder="Парола" IsPassword="True" />
-        <Button Text="Login" Clicked="OnLoginClicked" />
-        <Button Text="Register" Clicked="OnRegisterClicked" />
+        <Entry x:Name="UsernameEntry" TextColor="Black" Placeholder="Потребителско име" />
+        <Entry x:Name="PasswordEntry" TextColor="Black" Placeholder="Парола" IsPassword="True" />
+        <Button Text="Login" Clicked="OnLoginClicked" BackgroundColor="#2196F3" />
+        <Button Text="Register" Clicked="OnRegisterClicked" BackgroundColor="#2196F3" />
         <Label x:Name="ErrorLabel" TextColor="Red" IsVisible="False" />
     </StackLayout>
 

@@ -18,3 +18,5 @@ CREATE TABLE Leaderboard (
 INSERT INTO Users (Username, PasswordHash, Score)
 VALUES 
 ('testUser', '1234', 0); 
+
+

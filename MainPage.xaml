@@ -4,8 +4,28 @@
              x:Class="game.MainPage"
              BackgroundColor="White">
 
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Button Text="Login" Clicked="OnLoginClicked" />
-        <Button Text="Register" Clicked="OnRegisterClicked" />
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
+       
+        <Label Text="Морски шах на Бат Крис!"
+               FontSize="30"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="#2196F3" />
+        
+        <Button Text="Login"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="50"
+                CornerRadius="25"
+                Clicked="OnLoginClicked" />
+
+        <Button Text="Register"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="50"
+                CornerRadius="25"
+                Clicked="OnRegisterClicked" />
     </StackLayout>
 </ContentPage>
