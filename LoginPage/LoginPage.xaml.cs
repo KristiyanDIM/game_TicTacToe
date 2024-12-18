@@ -56,6 +56,12 @@ namespace game
             return Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)));
         }
 
+        private async void OnRegisterClicked(object sender, EventArgs e)
+        {
+            // Логика за регистрация
+            await DisplayAlert("Регистрация", "Функцията за регистрация е все още неактивна.", "OK");
+        }
+
         public class User
         {
             public int UserId { get; set; }

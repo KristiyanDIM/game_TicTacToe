@@ -1,25 +1,28 @@
 ﻿
+using Microsoft.Maui.Controls;
 
-public partial class MainPage : ContentPage
+namespace game 
 {
 
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
-    }
 
-    private void InitializeComponent()
-    {
-        throw new NotImplementedException();
-    }
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-    private async void OnLoginClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new game.LoginPage());
-    }
 
-    private async void OnRegisterClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new game.RegisterPage());
+        private void OnLoginClicked(object sender, EventArgs e)
+        {
+            // Логика за логване
+            DisplayAlert("Login", "Login functionality here", "OK");
+        }
+
+        private void OnRegisterClicked(object sender, EventArgs e)
+        {
+            // Логика за регистрация
+            DisplayAlert("Register", "Registration functionality here", "OK");
+        }
     }
 }
