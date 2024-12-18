@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="game.MainPage"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        <Style Class="GameButton" TargetType="Button">
+            <!-- Син фон -->
+            <Setter Property="BackgroundColor" Value="#2196F3"/>
+            <!-- Бял текст -->
+            <Setter Property="TextColor" Value="White"/>
+            <!-- Размер на текста -->
+            <Setter Property="FontSize" Value="45"/>
+            <!-- Закръглени ъгли -->
+            <Setter Property="CornerRadius" Value="5"/>
+            <!-- Широчина на бутоните -->
+            <Setter Property="WidthRequest" Value="100"/>
+            <!-- Височина на бутоните -->
+            <Setter Property="HeightRequest" Value="100"/>
+        </Style>
+
+            <Style Class="RestartButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#2196F3"/>
+                <!-- Зелен фон -->
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="WidthRequest" Value="350"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+            <!-- Основен контейнер с подредба на елементите -->
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="Морски шах"
+           TextColor="#2196F3"
+           FontSize="32"
+          
+           FontAttributes="Bold"
+           HorizontalOptions="Center"
+           VerticalOptions="Start"/>
+        
+        <!-- Показване на текущия играч -->
+        <Label x:Name="CurrentPlayerLabel" 
+               Text="Играч X е на ход"
+               TextColor="#2196F3"
+               FontSize="24" 
+               HorizontalOptions="Center" />
+
+        <!-- Игралното поле с 3x3 клетки -->
+        <Grid x:Name="grid" RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto"
+      HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+            <Button x:Name="Cell00" Text="" CommandParameter="0,0" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="0" Grid.Column="0" Margin="10"/>
+            <Button x:Name="Cell01" Text="" CommandParameter="0,1" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="0" Grid.Column="1" Margin="10"/>
+            <Button x:Name="Cell02" Text="" CommandParameter="0,2" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="0" Grid.Column="2" Margin="10"/>
+
+            <Button x:Name="Cell10" Text="" CommandParameter="1,0" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="1" Grid.Column="0" Margin="10"/>
+            <Button x:Name="Cell11" Text="" CommandParameter="1,1" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="1" Grid.Column="1" Margin="10"/>
+            <Button x:Name="Cell12" Text="" CommandParameter="1,2" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="1" Grid.Column="2" Margin="10"/>
+
+            <Button x:Name="Cell20" Text="" CommandParameter="2,0" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="2" Grid.Column="0" Margin="10"/>
+            <Button x:Name="Cell21" Text="" CommandParameter="2,1" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="2" Grid.Column="1" Margin="10"/>
+            <Button x:Name="Cell22" Text="" CommandParameter="2,2" Clicked="OnCellTapped" 
+            StyleClass="GameButton" Grid.Row="2" Grid.Column="2" Margin="10"/>
+
+        </Grid>
+
+
+        <!-- Опция за рестартиране на играта -->
+        <Button Text="Рестартирай играта" 
+        Clicked="OnRestartClicked" 
+        StyleClass="RestartButton"/>
+    </VerticalStackLayout>
+</ContentPage>
