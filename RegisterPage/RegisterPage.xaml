@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="game.RegisterPage"
+             Title="RegisterPage">
+    <StackLayout Padding="30">
+        <Label Text="Регистрация" FontSize="24" HorizontalOptions="Center" />
+        <Entry x:Name="UsernameEntry" Placeholder="Потребителско име" />
+        <Entry x:Name="PasswordEntry" Placeholder="Парола" IsPassword="True" />
+        <Button Text="Регистрирай" Clicked="OnRegisterClicked" />
+        <Label x:Name="ErrorLabel" TextColor="Red" IsVisible="False" />
+    </StackLayout>
+</ContentPage>
