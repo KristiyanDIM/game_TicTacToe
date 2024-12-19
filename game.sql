@@ -20,3 +20,4 @@ VALUES
 ('testUser', '1234', 0); 
 
 
+SELECT Username, PasswordHash FROM Users;

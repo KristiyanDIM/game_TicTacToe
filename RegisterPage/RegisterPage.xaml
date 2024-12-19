@@ -6,8 +6,8 @@
              Background="White">
     <StackLayout Padding="30">
         <Label Text="Регистрация" FontSize="24" HorizontalOptions="Center" />
-        <Entry x:Name="UsernameEntry" Placeholder="Потребителско име" />
-        <Entry x:Name="PasswordEntry" Placeholder="Парола" IsPassword="True" />
+        <Entry x:Name="UsernameEntry" TextColor="Black" Placeholder="Потребителско име" />
+        <Entry x:Name="PasswordEntry" TextColor="Black" Placeholder="Парола" IsPassword="True" />
         <Button Text="Регистрирай" Clicked="OnRegisterClicked" BackgroundColor="#2196F3" />
         <Label x:Name="ErrorLabel" TextColor="Red" IsVisible="False" />
     </StackLayout>
