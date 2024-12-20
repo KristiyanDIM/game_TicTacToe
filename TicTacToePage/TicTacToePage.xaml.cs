@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Compatibility;
 
 namespace game
 {
@@ -10,11 +9,14 @@ namespace game
         private string[,] board = new string[3, 3]; // 3x3 масив за игралното поле
         private int moveCount = 0; // Броя на направените ходове
 
+        private int playerXScore = 0;
+        private int playerOScore = 0;
+
         public TicTacToePage(LoginPage.User user)
         {
             InitializeComponent();
             InitializeBoard();
-
+            UpdateScoreLabel(); // Инициално актуализиране на резултатите
         }
 
         // Инициализиране на игралното поле
@@ -51,6 +53,16 @@ namespace game
             // Проверяваме дали има победител
             if (CheckWinner())
             {
+                if (currentPlayer == "X")
+                {
+                    playerXScore++; // Увеличаваме резултата на X
+                }
+                else
+                {
+                    playerOScore++; // Увеличаваме резултата на O
+                }
+
+                UpdateScoreLabel(); // Актуализиране на резултатите
                 DisplayAlert("Победител", $"Играч {currentPlayer} победи!", "OK");
                 RestartGame();
                 return;
@@ -67,6 +79,12 @@ namespace game
             // Превключваме на следващия играч
             currentPlayer = currentPlayer == "X" ? "O" : "X";
             CurrentPlayerLabel.Text = $"Играч {currentPlayer} е на ход";
+        }
+
+        // Актуализиране на резултатите
+        private void UpdateScoreLabel()
+        {
+            ScoreLabel.Text = $"Резултат - Играч X: {playerXScore} | Играч O: {playerOScore}";
         }
 
         // Метод за проверка на победител
@@ -111,14 +129,9 @@ namespace game
             CurrentPlayerLabel.Text = "Играч X е на ход";
         }
 
-
-
-        // Метод за рестартиране на играта (използваме го и при равенство)
         private void OnRestartClicked(object sender, EventArgs e)
         {
             RestartGame();
         }
-
-
     }
 }

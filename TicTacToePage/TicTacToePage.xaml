@@ -52,6 +52,14 @@
                FontSize="24" 
                HorizontalOptions="Center" />
 
+        <Label x:Name="ScoreLabel"
+            Text="Резултат - Играч X: 0 | Играч O: 0"
+            FontSize="18"
+            TextColor="#2196F3"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Margin="10" />
+
         <!-- Игралното поле с 3x3 клетки -->
         <Grid x:Name="grid" RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto"
       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
