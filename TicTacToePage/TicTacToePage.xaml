@@ -92,5 +92,7 @@
         <Button Text="Рестартирай играта" 
         Clicked="OnRestartClicked" 
         StyleClass="RestartButton"/>
+
+        
     </VerticalStackLayout>
 </ContentPage>

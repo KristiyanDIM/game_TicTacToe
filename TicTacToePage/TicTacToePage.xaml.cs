@@ -5,10 +5,11 @@ namespace game
 {
     public partial class TicTacToePage : ContentPage
     {
-        private string currentPlayer = "X";
-        private string[,] board = new string[3, 3]; // 3x3 масив за игралното поле
-        private int moveCount = 0; // Броя на направените ходове
+        private string currentPlayer = "X"; // Текущият играч (X или O)
+        private string[,] board = new string[3, 3]; // Игралното поле (3x3)
+        private int moveCount = 0; // Брояч на ходовете
 
+        // Резултати на играчите
         private int playerXScore = 0;
         private int playerOScore = 0;
 
@@ -16,25 +17,25 @@ namespace game
         {
             InitializeComponent();
             InitializeBoard();
-            UpdateScoreLabel(); // Инициално актуализиране на резултатите
+            UpdateScoreLabel();
+            UpdateCurrentPlayerLabel();
         }
 
         // Инициализиране на игралното поле
         private void InitializeBoard()
         {
-            // Запълваме всички клетки с празни низове
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    board[i, j] = string.Empty;
+                    board[i, j] = string.Empty; // Празни стойности в началото
                 }
             }
             moveCount = 0;
         }
 
-        // Метод за обработка на кликване върху клетка
-        private void OnCellTapped(object sender, EventArgs e)
+        // Обработва кликване върху клетка
+        private async void OnCellTapped(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             var coordinates = button.CommandParameter.ToString().Split(',');
@@ -45,52 +46,47 @@ namespace game
             if (!string.IsNullOrEmpty(board[row, col]))
                 return;
 
-            // Поставяме символа на текущия играч в съответната клетка
+            // Записваме хода на текущия играч
             board[row, col] = currentPlayer;
             button.Text = currentPlayer;
             moveCount++;
 
-            // Проверяваме дали има победител
+            // Проверка за победител
             if (CheckWinner())
             {
                 if (currentPlayer == "X")
                 {
-                    playerXScore++; // Увеличаваме резултата на X
+                    playerXScore++; // Увеличаваме резултата на играч X
                 }
                 else
                 {
-                    playerOScore++; // Увеличаваме резултата на O
+                    playerOScore++; // Увеличаваме резултата на играч O
                 }
 
-                UpdateScoreLabel(); // Актуализиране на резултатите
-                DisplayAlert("Победител", $"Играч {currentPlayer} победи!", "OK");
+                UpdateScoreLabel(); // Актуализиране на резултата в UI
+
+                await DisplayAlert("Победител", $"Играч {currentPlayer} победи!", "OK");
                 RestartGame();
                 return;
             }
 
-            // Проверяваме за равенство
+            // Проверка за равенство
             if (moveCount == 9)
             {
-                DisplayAlert("Равенство", "Няма победител!", "OK");
+                await DisplayAlert("Равенство", "Няма победител!", "OK");
                 RestartGame();
                 return;
             }
 
-            // Превключваме на следващия играч
+            // Смяна на играча
             currentPlayer = currentPlayer == "X" ? "O" : "X";
-            CurrentPlayerLabel.Text = $"Играч {currentPlayer} е на ход";
+            UpdateCurrentPlayerLabel();
         }
 
-        // Актуализиране на резултатите
-        private void UpdateScoreLabel()
-        {
-            ScoreLabel.Text = $"Резултат - Играч X: {playerXScore} | Играч O: {playerOScore}";
-        }
-
-        // Метод за проверка на победител
+        // Проверява за победител
         private bool CheckWinner()
         {
-            // Проверяваме редовете и колоните
+            // Проверка на редовете и колоните
             for (int i = 0; i < 3; i++)
             {
                 if ((board[i, 0] == currentPlayer && board[i, 1] == currentPlayer && board[i, 2] == currentPlayer) ||
@@ -110,25 +106,35 @@ namespace game
             return false;
         }
 
+        // Актуализира текста на етикета за текущия играч
+        private void UpdateCurrentPlayerLabel()
+        {
+            CurrentPlayerLabel.Text = $"Играч {currentPlayer} е на ход";
+        }
+
+        // Актуализира текста на етикета за резултата
+        private void UpdateScoreLabel()
+        {
+            ScoreLabel.Text = $"Резултат - Играч X: {playerXScore} | Играч O: {playerOScore}";
+        }
+
+        // Рестартира играта
         private void RestartGame()
         {
-            // Изчистване на игралното поле
             InitializeBoard();
-
-            // Изчистваме текста на всеки бутон в игралното поле
             foreach (var child in grid.Children)
             {
                 if (child is Button button)
                 {
-                    button.Text = string.Empty; // Изчистваме текста на бутона
+                    button.Text = string.Empty; // Изчистваме текста на бутоните
                 }
             }
 
-            // Връщаме играча X на ход
-            currentPlayer = "X";
-            CurrentPlayerLabel.Text = "Играч X е на ход";
+            currentPlayer = "X"; // Започваме отново с играч X
+            UpdateCurrentPlayerLabel();
         }
 
+        // Обработка на натискане на бутона за рестарт
         private void OnRestartClicked(object sender, EventArgs e)
         {
             RestartGame();
